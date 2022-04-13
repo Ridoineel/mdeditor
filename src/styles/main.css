@@ -79,9 +79,8 @@ body {
     height: 100%;
     border: none;
     resize: none;
-}
-textarea:focus {
-
+    outline: none;
+    border-left: 1px solid black;
 }
 
 .html-pane{

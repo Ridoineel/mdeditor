@@ -13,9 +13,18 @@ function App() {
   let [html, setHtml] = useState(null);
 
   useEffect(() => {
+
+    let markD = localStorage.getItem("contentMarkdown");
+
+    setMarkdown(markD)
+  }, [])
+
+  useEffect(() => {
     // convert markdown to html
     if (markdown) {
       let htmlContent = marked(markdown) // dompurify.sanitize(marked(markdown))
+
+      localStorage.setItem("contentMarkdown", markdown);
 
       setHtml(htmlContent)
     }
@@ -26,7 +35,7 @@ function App() {
     <div className="App min-height-full container">
 
       <div className="ide-container">
-        <MarkdownPane content={markdown} setMarkdown={setMarkdown}/>
+        <MarkdownPane content={markdown} markdownState={[markdown, setMarkdown]}/>
         <HtmlPane content={html} />
       </div>
     </div>
