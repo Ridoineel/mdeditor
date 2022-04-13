@@ -8,7 +8,7 @@ router.post("/", (req, res) => {
     let {fileContent, file} = req.body;
     let {truename, extension} = file;
 
-    let filename = `${truename}_${Date.now()}.${extension}`;
+    let filename = `${truename}_mdeditor_${Date.now()}.${extension}`;
     let filePath = join(dirname(__dirname), "files", filename);
     let token = jwt.sign({filename}, process.env.TOKEN_SECRET, {expiresIn: "1h"})
 
