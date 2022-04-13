@@ -16,7 +16,6 @@ app.use((req, res, next)=>{
     next();
 })
 
-//app.use("/files", express.static(__dirname  + "/images"))
 app.use("/files", fileRouter)
 
 app.listen(port=process.env.PORT || 8080, () => {
