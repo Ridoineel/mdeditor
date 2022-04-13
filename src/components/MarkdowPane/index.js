@@ -1,12 +1,10 @@
-import { useRef } from "react";
 import axios from "axios";
 import {BACKEND_DOMAIN} from "../../env"
 
 
 const MarkdownPane = (props) => {
-    let textarea = useRef(null)
     let contentMarkdown = props.content
-    let [markdown, setMarkdown] = props.markdownState
+    let setMarkdown = props.setMarkdown
 
     function handleChange(event) {
         let markD = event.target.value;
@@ -16,7 +14,7 @@ const MarkdownPane = (props) => {
 
     async function handleClick(e) {
         let body = {
-            fileContent: markdown,
+            fileContent: contentMarkdown,
             file: {
                 truename: "README",
                 extension: "md"
@@ -40,7 +38,7 @@ const MarkdownPane = (props) => {
         <div className="markdown-pane pane-container">
             
             {/* Use dangerously set html */}
-            <textarea ref={textarea} className="pane-text" onChange={handleChange}>
+            <textarea className="pane-text" onChange={handleChange}>
                 {contentMarkdown}
             </textarea>
 

@@ -35,7 +35,7 @@ function App() {
     <div className="App min-height-full container">
 
       <div className="ide-container">
-        <MarkdownPane content={markdown} markdownState={[markdown, setMarkdown]}/>
+        <MarkdownPane content={markdown} setMarkdown={setMarkdown}/>
         <HtmlPane content={html} />
       </div>
     </div>
