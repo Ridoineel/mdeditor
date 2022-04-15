@@ -1,18 +1,20 @@
 import axios from "axios";
+import {useEffect, useRef} from "react"
+import DownloadButton from "../DownloadButton"
 import {BACKEND_DOMAIN} from "../../env"
 
 
 const MarkdownPane = (props) => {
     let contentMarkdown = props.content
     let setMarkdown = props.setMarkdown
+    let textarea = useRef(null)
 
     function handleChange(event) {
         let markD = event.target.value;
-        
         setMarkdown(markD);
     }
 
-    async function handleClick(e) {
+    async function handleClickDownload(e) {
         let body = {
             fileContent: contentMarkdown,
             file: {
@@ -34,16 +36,30 @@ const MarkdownPane = (props) => {
         }
     }
 
+    function handleClickClear(e) {
+        setMarkdown("")
+    }
+
+    useEffect(() => {
+        textarea.current.focus()
+    })
+
     return (
         <div className="markdown-pane pane-container">
-            
             {/* Use dangerously set html */}
-            <textarea className="pane-text" onChange={handleChange}>
-                {contentMarkdown}
+            <textarea 
+                ref={textarea} 
+                className="pane-text" 
+                onChange={handleChange} 
+                value={contentMarkdown}
+                placeholder="Markdown text..."
+            >
             </textarea>
 
-            <button onClick={handleClick}>
-                Download markdown
+            <DownloadButton onClick={handleClickDownload} content="Download MD" />
+
+            <button onClick={handleClickClear} className="btn clear-btn">
+                Clear
             </button>
         </div>
     )

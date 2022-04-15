@@ -1,4 +1,5 @@
 import axios from "axios";
+import DownloadButton from "../DownloadButton"
 import {BACKEND_DOMAIN} from "../../env"
 
 function createHtmlFileContent(body) {
@@ -48,13 +49,7 @@ const HtmlPane = (props) => {
                 
             </div>
 
-            <button onClick={handleClick}>
-                Download html
-            </button>
-
-            <button>
-                Download style.css
-            </button>
+            <DownloadButton onClick={handleClick} content="Download html" />
         </div>
     )
 }
