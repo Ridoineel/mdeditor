@@ -22,24 +22,26 @@ const HtmlPane = (props) => {
     let contentHtml = props.content;
 
     async function handleClick(e) {
-        let body = {
-            fileContent: createHtmlFileContent(contentHtml),
-            file: {
-                truename: "index",
-                extension: "html"
+        if (contentHtml) {
+            let body = {
+                fileContent: createHtmlFileContent(contentHtml),
+                file: {
+                    truename: "index",
+                    extension: "html"
+                }
             }
-        }
-        let res;
-        
-        try {
-            res = await axios.post(BACKEND_DOMAIN + "/files", body);
-
-            if (res.status === 200) {
-                let {filename, token} = res.data;
-                window.location = `${BACKEND_DOMAIN}/files/${filename}?token=${token}`;
+            let res;
+            
+            try {
+                res = await axios.post(BACKEND_DOMAIN + "/files", body);
+    
+                if (res.status === 200) {
+                    let {filename, token} = res.data;
+                    window.location = `${BACKEND_DOMAIN}/files/${filename}?token=${token}`;
+                }
+            } catch (err) {
+                console.log(err)
             }
-        } catch (err) {
-            console.log(err)
         }
     }
 
@@ -49,7 +51,7 @@ const HtmlPane = (props) => {
                 
             </div>
 
-            <DownloadButton onClick={handleClick} content="Download html" />
+            <DownloadButton onClick={handleClick} />
         </div>
     )
 }

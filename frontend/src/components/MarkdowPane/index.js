@@ -15,24 +15,26 @@ const MarkdownPane = (props) => {
     }
 
     async function handleClickDownload(e) {
-        let body = {
-            fileContent: contentMarkdown,
-            file: {
-                truename: "README",
-                extension: "md"
+        if (contentMarkdown) {
+            let body = {
+                fileContent: contentMarkdown,
+                file: {
+                    truename: "README",
+                    extension: "md"
+                }
             }
-        }
-        let res;
-        
-        try {
-            res = await axios.post(BACKEND_DOMAIN + "/files", body);
-
-            if (res.status === 200) {
-                let {filename, token} = res.data;
-                window.location = `${BACKEND_DOMAIN}/files/${filename}?token=${token}`;
+            let res;
+    
+            try {
+                res = await axios.post(BACKEND_DOMAIN + "/files", body);
+    
+                if (res.status === 200) {
+                    let {filename, token} = res.data;
+                    window.location = `${BACKEND_DOMAIN}/files/${filename}?token=${token}`;
+                }
+            } catch (err) {
+                console.log(err)
             }
-        } catch (err) {
-            console.log(err)
         }
     }
 
@@ -56,7 +58,7 @@ const MarkdownPane = (props) => {
             >
             </textarea>
 
-            <DownloadButton onClick={handleClickDownload} content="Download MD" />
+            <DownloadButton onClick={handleClickDownload} />
 
             <button onClick={handleClickClear} className="btn clear-btn">
                 Clear
