@@ -45,7 +45,7 @@ const HtmlPane = (props) => {
 
     return (
         <div className="html-pane pane-container">
-            <div className="pane-text" dangerouslySetInnerHTML={{__html: contentHtml}}>
+            <div className="pane-text markdown-body" dangerouslySetInnerHTML={{__html: contentHtml}}>
                 
             </div>
 

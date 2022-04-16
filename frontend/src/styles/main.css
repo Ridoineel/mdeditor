@@ -66,7 +66,6 @@ body {
     margin-top: 3vh;
     border-radius: 10px;
     box-shadow: 0 0 30px var(--color-shadow);
-    
     overflow: hidden;
 }
 
@@ -101,7 +100,7 @@ body {
     height: 95%; 
     word-wrap: break-word;
     overflow: scroll;
-    border: 1px solid black;
+    /* border: 1px solid black; */
 }
 
 .clear-btn {
