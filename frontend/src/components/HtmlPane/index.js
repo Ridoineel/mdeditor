@@ -1,6 +1,6 @@
 import axios from "axios";
 import DownloadButton from "../DownloadButton"
-import {BACKEND_DOMAIN} from "../../env"
+import {APP_DOMAIN, BACKEND_DOMAIN} from "../../env"
 
 function createHtmlFileContent(body) {
     body = body.replaceAll("\n", "\n\t\t")
@@ -10,9 +10,12 @@ function createHtmlFileContent(body) {
 \t<head>
 \t\t<meta charset="utf-8" />
 \t\t<title>Html from markdown | mdeditor </title>
+\t\t<link rel="stylesheet" href="${APP_DOMAIN}/markdown.css" />
 \t</head>
 \t<body>
-\t\t${body}
+\t\t<div class="markdown-body">
+\t\t\t${body}
+\t\t</div>
 \t</body>
 </html>
 `
