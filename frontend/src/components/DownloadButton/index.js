@@ -7,7 +7,6 @@ const DownloadButton = (props) => {
 
     return (
         <motion.button 
-        initial={{opacity: 0.7}}
         whileHover={{scale: 1.1, opacity: 1}}
         transition={{
             type: "spring",
