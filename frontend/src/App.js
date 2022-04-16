@@ -9,28 +9,30 @@ import {marked} from "marked";
 // const dompurify = createDomPurify(new JSDOM().window);
 
 function App() {
-  let [markdown, setMarkdown] = useState("");
-  let [html, setHtml] = useState("");
+  let [markdown, setMarkdown] = useState(null);
+  let [html, setHtml] = useState(null);
 
   useEffect(() => {
     let markD = localStorage.getItem("contentMarkdown");
 
-    setMarkdown(markD || "")
+    setMarkdown("" ||  markD)
   }, [])
 
   useEffect(() => {
     // convert markdown to html
     let htmlContent
 
-    if (markdown) {
+    if (markdown !== null) {
       htmlContent = marked(markdown) // dompurify.sanitize(marked(markdown))
+      // save markdown in local storage
+      localStorage.setItem("contentMarkdown", markdown);
+
+      if (markdown === "")
+        htmlContent = "Html output..."
     }else { 
       htmlContent = "Html output..."
     }
 
-    // save markdown in local storage
-    localStorage.setItem("contentMarkdown", markdown);
-    
     // update html text
     setHtml(htmlContent)
   }, [markdown])

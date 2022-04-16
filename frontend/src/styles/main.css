@@ -104,9 +104,9 @@ body {
 }
 
 .clear-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
+    position: sticky;
+    bottom: 95vh;
+    left: 100vw
 } 
 
 .download-btn {
