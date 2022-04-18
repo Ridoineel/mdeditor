@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import MarkdownPane from "./components/MarkdowPane";
 import HtmlPane from "./components/HtmlPane";
@@ -7,6 +7,7 @@ import {BACKEND_DOMAIN} from "./env"
 function App() {
   let [markdown, setMarkdown] = useState(null);
   let [html, setHtml] = useState(null);
+  let htmlPaneContainer = useRef(null);
 
   useEffect(() => {
     let markD = localStorage.getItem("contentMarkdown");
@@ -22,8 +23,11 @@ function App() {
     (async () => {
       let htmlContent
       let res
-
+      htmlContent = "Html output..."
+      
       if (markdown !== null) {
+        
+
         // convert markdown to html
         try {
           res = await axios.post(BACKEND_DOMAIN + "/md2html", {
@@ -32,20 +36,18 @@ function App() {
 
           if (res.status === 200) {
             htmlContent = res.data.html;
+            htmlPaneContainer.current.classList.remove("skeleton-animation");
           }
         } catch (error) {
+          htmlPaneContainer.current.classList.add("skeleton-animation");
           console.log(error)
         }
         
         // save markdown in local storage
         localStorage.setItem("contentMarkdown", markdown);
-
-        if (markdown === "")
-          htmlContent = "Html output..."
-      }else { 
-        htmlContent = "Html output..."
       }
 
+      
       // update html text
       setHtml(htmlContent)
     })();
@@ -56,7 +58,7 @@ function App() {
     <div className="App min-height-full">
       <div className="ide-container">
         <MarkdownPane content={markdown} setMarkdown={setMarkdown} rel="noopener" />
-        <HtmlPane content={html} />
+        <HtmlPane content={html} objRef={htmlPaneContainer} />
       </div>
 
       <a href="https://github.com/ridoineel" target="_blank" rel="noreferrer">

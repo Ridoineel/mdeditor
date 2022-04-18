@@ -190,6 +190,17 @@ body {
     }
 } 
 
+.skeleton-animation {
+    background-color: #eee;
+    animation: skeleton 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes skeleton {
+    to {
+        opacity: 0.6;
+    }
+}
+
 /* 
 .file-input {
     display: none;

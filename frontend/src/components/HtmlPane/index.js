@@ -49,8 +49,11 @@ const HtmlPane = (props) => {
     }
 
     return (
-        <div className="html-pane pane-container">
-            <div className="pane-text markdown-body" dangerouslySetInnerHTML={{__html: contentHtml}}>
+        <div className="html-pane pane-container" ref={props.objRef}>
+            <div 
+                className="pane-text markdown-body" 
+                dangerouslySetInnerHTML={{__html: contentHtml}}
+            >
                 
             </div>
 
