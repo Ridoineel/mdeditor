@@ -18,13 +18,13 @@ and download **.html** file for her preview.
 ### Clone this repo
 
 ``` bash
-git clone https://github.com/ridoineel/markdown-editor
+git clone https://github.com/ridoineel/mdeditor
 ```
 
 ### Run frontend
 
 ``` bash
-cd markdown-editor/frontend
+cd mdeditor/frontend
 npm start
 ```
 
@@ -32,6 +32,6 @@ npm start
 **(_it's mandatory_)**
 
 ``` bash
-cd markdown-editor/backend
+cd mdeditor/backend
 npm start
 ```
