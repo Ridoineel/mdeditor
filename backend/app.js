@@ -1,6 +1,7 @@
 const express = require("express")
 const cors = require("cors")
 const fileRouter = require("./routes/fileRouter")
+const md2htmlCtrl = require("./controlers/md2html")
 
 require("dotenv").config()
 
@@ -17,6 +18,7 @@ app.use((req, res, next)=>{
 })
 
 app.use("/files", fileRouter)
+app.post("/md2html", md2htmlCtrl)
 
 app.listen(port=process.env.PORT || 8080, () => {
     console.log(`server listen on localhost:${port}`)
