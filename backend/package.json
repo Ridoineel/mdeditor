@@ -17,6 +17,9 @@
     "express": "^4.17.3",
     "cors": "^2.8.5",
     "nodemon": "^2.0.15",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "dompurify": "^2.3.6",
+    "jsdom": "^19.0.0",
+    "marked": "^4.0.12"
   }
 }
