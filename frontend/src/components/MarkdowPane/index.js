@@ -53,7 +53,7 @@ const MarkdownPane = (props) => {
                 ref={textarea} 
                 className="pane-text" 
                 onChange={handleChange} 
-                value={contentMarkdown}
+                value={contentMarkdown || ""}
                 placeholder="Markdown text..."
             >
             </textarea>
