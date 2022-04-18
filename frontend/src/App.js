@@ -59,7 +59,7 @@ function App() {
         <HtmlPane content={html} />
       </div>
 
-      <a href="https://github.com/ridoineel" target="_blank">
+      <a href="https://github.com/ridoineel" target="_blank" rel="noreferrer">
         <div className="github-btn-container">
           <div className="github-btn">
             {/* Github svg icon */}
