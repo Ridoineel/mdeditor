@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import MarkdownPane from "./components/MarkdowPane";
 import HtmlPane from "./components/HtmlPane";
-import {BACKEND_DOMAIN} from "../../env"
+import {BACKEND_DOMAIN} from "./env"
 
 function App() {
   let [markdown, setMarkdown] = useState(null);
@@ -18,9 +18,10 @@ function App() {
     /* Reload html when markdown text changed 
     *
     */
-   
+
     (async () => {
       let htmlContent
+      let res
 
       if (markdown !== null) {
         // convert markdown to html
